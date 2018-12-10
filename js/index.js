@@ -13,7 +13,7 @@ function initApp() {
 
     getRipplePrice()
         .then(json => {
-            displayRipplecoinResults(json)
+            displayRippleResults(json)
         })
 
     getEthereumPrice()
@@ -62,9 +62,9 @@ function displayBitcoinResults(json) {
     $('.bitcoin').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span>`)
 }
 
-//Ethereum price
+//Ripple price
 function getRipplePrice() {
-    return fetch(`${NEXCHANGE_BASE_URL}/price/XRPUSD/latest/?market_code=nex`)
+    return fetch(`${NEXCHANGE_BASE_URL}/price/XRPUSDT/latest/?market_code=nex`)
         .then(res => res.json())
 }
 
