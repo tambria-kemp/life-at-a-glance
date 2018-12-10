@@ -216,7 +216,6 @@ sup {
 
 .news p {
   margin: 0;
-  font-size: 12px;
 }
 
 .news h4 {
@@ -252,6 +251,17 @@ sup {
 
 .col-pad {
   margin-bottom: 10px;
+}
+
+.market-watch {
+  margin-top: 10px;
+}
+.market-watch p{
+  font-size: 14px;
+}
+
+.blue {
+  color:  rgb(24, 138, 226);
 }
 /**-----------------------------------------------------------------------Desktop--------------**/
 

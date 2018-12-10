@@ -8,7 +8,6 @@ const AIRVISUAL_BASE_URL = 'https://api.airvisual.com/v2'
 function initApp() {
     getBitcoinPrice()
         .then(json => {
-            console.log(json)
             displayBitcoinResults(json)
         })
 
@@ -25,14 +24,9 @@ function initApp() {
     getLitecoinPrice()
         .then(json => {
             displayLitecoinResults(json)
-        })
+        }) 
 
-    // getCurrentWeather ()
-    //     .then(json => {
-    //         displayWeatherData(json)
-    //     })   
-
-    getMarketWatch();
+    getUpcomingIPO();
     defaultWatchList();
     getCurrentWeather();
     defaultStockQuote();
@@ -56,12 +50,6 @@ function defaultStockNews() {
     fetch(`${IEXTRADING_BASE_URL}/stock/aapl/news/last`)
         .then(res => res.json())
         .then(json => displayStockNews(json))
-}
-
-function getMarketWatch() {
-    fetch(`${IEXTRADING_BASE_URL}/stock/market/upcoming-ipos`)
-        .then(res => res.json())
-        .then(json => displayMarketWatch(json))
 }
 
 //Bitcoin price
@@ -129,12 +117,26 @@ function displayStockQuote(json) {
     $('.stock-close').append(`<p>Close ${json.quote.close} USD</p>`)
     $('.stock-low').append(`<p>Low ${json.quote.low} USD</p>`)
     $('.stock-high').append(`<p>High ${json.quote.high} USD</p>`)
-
-
 }
+
+function getUpcomingIPO() {
+    fetch(`${IEXTRADING_BASE_URL}/stock/market/upcoming-ipos`)
+        .then(res => res.json())
+        .then(json => displayUpcomingIPO(json))
+}
+
 //https://api.iextrading.com/1.0/stock/market/upcoming-ipos
-function displayMarketWatch(json) {
-    $('.market-watch').append(`${json.rawData[1].symbol} ${json.rawData[1].companyName} ${json.rawData[1].expectedDate}`)
+function displayUpcomingIPO(json) {
+    for (let i = 0; i < 3; i++) {
+        $('.market-watch').append(`<li class="news">${json.rawData[i].companyName}</br>${json.rawData[i].expectedDate}</li>`)
+    }
+}
+
+function displayWatchList(json) {
+    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['AAPL'].quote.symbol}</span> | ${json['AAPL'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['FB'].quote.symbol}</span> | ${json['FB'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['TSLA'].quote.symbol}</span> | ${json['TSLA'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['GOOGL'].quote.symbol}</span> | ${json['GOOGL'].quote.latestPrice} USD </p></li>`)
 }
 
 function getStockNews(userInput) {
@@ -151,14 +153,6 @@ function displayStockNews(json) {
     </li>`)
     }
 }
-
-function displayWatchList(json) {
-    $('.watch-list').append(`<li class="news"><p>${json['AAPL'].quote.symbol} | ${json['AAPL'].quote.latestPrice} USD </p></li>`)
-    $('.watch-list').append(`<li class="news"><p>${json['FB'].quote.symbol} | ${json['FB'].quote.latestPrice} USD </p></li>`)
-    $('.watch-list').append(`<li class="news"><p>${json['TSLA'].quote.symbol} | ${json['TSLA'].quote.latestPrice} USD </p></li>`)
-    $('.watch-list').append(`<li class="news"><p>${json['GOOGL'].quote.symbol} | ${json['GOOGL'].quote.latestPrice} USD </p></li>`)
-}
-
 
 function getCurrentWeather() {
     fetch(`${AIRVISUAL_BASE_URL}/nearest_city?key=7hoQuH3S2FKxqfr59`)
@@ -182,7 +176,7 @@ $(initApp);
 
 
 //TO DO ITEMS
-//display data for watchlist and marketwatch ipos
+//display data for watchlist and UpcomingIPO ipos
 //change crypto to pull from one source 
 //single responsibility for getStockQuote getStockNews
 //add footer to index file and make it stick to bottom 
