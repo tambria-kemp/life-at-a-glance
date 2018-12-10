@@ -1,6 +1,9 @@
 /* mobile */
+html {
+  min-height: 100%;
+
+}
 body {
-  margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   background-color:#253138;
@@ -11,8 +14,11 @@ header {
   left: 0px;
     position: fixed;
     right: 0;
-    top: 0px;
+    top: 0;
     z-index: 999;
+    width: 100%;
+    background: #253138;
+
 }
 
 main {
@@ -20,6 +26,8 @@ main {
   overflow: hidden;
   width: 100%;
 }
+
+
 
 section {
   margin-bottom: 10px;
@@ -45,9 +53,9 @@ nav {
   z-index: 1;
 }
 
-nav.black ul {
+/* nav.black ul {
   background: #000;
-}
+} */
 
 /* nav ul {
   line-height: 20px;
@@ -65,8 +73,9 @@ nav.black ul {
 input[type=text] {
   background-color: rgba(0,0,0,.35);
   border: 0;
+  font-size: 18px;
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   color: white; 
   margin: 10px 0 10px; 
   display: block;
@@ -84,13 +93,12 @@ sup {
 }
 
 .topbar-left {
-  background: #253138;
   float: left;
   text-align: center;
   height: 71px;
   padding-top: 20px;
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   z-index: 1;
 }
 
@@ -193,6 +201,7 @@ sup {
 
 .stock-data-col {
   margin-right: 15px;
+  font-size: 14px;
 }
 
 .company-sector {
@@ -239,7 +248,10 @@ sup {
 }
 
 @media (min-width: 768px) {
-
+  .stock-data-col {
+    margin-right: 10px;
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -257,16 +269,7 @@ sup {
     max-height: 100%;
   }
 
-  .navbar-right {
-    background-color: #253138;
-    border-radius: 0px;
-    border: none;
-    display: inline-block;
-    height: 71px;
-    margin-bottom: 0px;
-    padding: 33px 25px;
-    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
-  }
+
   .menu-icon {
     display: none;
   }
@@ -278,6 +281,10 @@ sup {
 
   .content-page .content {
     margin-top: 93px;
+  }
+
+  .stock-data-col {
+    font-size: 14px;
   }
 
   .weather-icon img {
@@ -293,5 +300,5 @@ sup {
 }
 
 @media (min-width: 1200px) {
- 
+
   }

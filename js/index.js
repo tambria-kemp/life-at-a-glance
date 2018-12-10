@@ -116,10 +116,15 @@ function getStockQuote (userInput) {
 }
 
 function displayStockQuote(json) {
-    $('.stock-price, .company-name').html('');
+    $('.stock-price, .company-name, .stock-open, .stock-close, .stock-high, .stock-low').html('');
     $('.stock-price').append(`<h2>${json.quote.latestPrice} USD <span class="change-percent">${json.quote.changePercent}%</span></h2> `)
     $('.company-name').append(`<h2>${json.quote.companyName} (${json.quote.symbol})</h2>`)
-    $('.company-sector').append(`<p>${json.quote.sector}</p>`)
+    $('.stock-open').append(`<p>Open ${json.quote.open} USD</p>`)
+    $('.stock-close').append(`<p>Close ${json.quote.close} USD</p>`)
+    $('.stock-low').append(`<p>Low ${json.quote.low} USD</p>`)
+    $('.stock-high').append(`<p>High ${json.quote.high} USD</p>`)
+
+
 }
 
 function displayMarketWatch(json) {
@@ -165,3 +170,4 @@ $(initApp);
 //TO DO ITEMS
 //change crypto to pull from one source 
 //single responsibility for getStockQuote getStockNews
+//add footer to index file and make it stick to bottom 
