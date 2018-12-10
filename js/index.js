@@ -11,11 +11,11 @@ function initApp() {
             console.log(json)
             displayBitcoinResults(json)
         })
-    
+
     getRipplePrice()
-    .then(json => {
-        displayRipplecoinResults(json)
-    })
+        .then(json => {
+            displayRipplecoinResults(json)
+        })
 
     getEthereumPrice()
         .then(json => {
@@ -26,26 +26,33 @@ function initApp() {
         .then(json => {
             displayLitecoinResults(json)
         })
-    
+
     // getCurrentWeather ()
     //     .then(json => {
     //         displayWeatherData(json)
     //     })   
 
-    getMarketWatch(); 
+    getMarketWatch();
+    defaultWatchList();
     getCurrentWeather();
     defaultStockQuote();
     defaultStockNews();
-    watchStockQuoteForm(); 
+    watchStockQuoteForm();
 }
 
-function defaultStockQuote () {
+function defaultStockQuote() {
     fetch(`${IEXTRADING_BASE_URL}/stock/aapl/book`)
         .then(res => res.json())
         .then(json => displayStockQuote(json))
 }
 
-function defaultStockNews () {
+function defaultWatchList() {
+    fetch(`${IEXTRADING_BASE_URL}/stock/market/batch?symbols=aapl,fb,tsla,googl,aal&types=quote,news,chart&range=1m&last=5`)
+        .then(res => res.json())
+        .then(json => displayWatchList(json))
+}
+
+function defaultStockNews() {
     fetch(`${IEXTRADING_BASE_URL}/stock/aapl/news/last`)
         .then(res => res.json())
         .then(json => displayStockNews(json))
@@ -54,62 +61,61 @@ function defaultStockNews () {
 function getMarketWatch() {
     fetch(`${IEXTRADING_BASE_URL}/stock/market/upcoming-ipos`)
         .then(res => res.json())
-        .then(json => displayMarketWatch())
-        .then(json => console.log(json))
+        .then(json => displayMarketWatch(json))
 }
 
 //Bitcoin price
-function getBitcoinPrice () {
+function getBitcoinPrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/BTCUSD/latest/?market_code=nex`)
         .then(res => res.json())
 }
 
 function displayBitcoinResults(json) {
-    $('.bitcoin').append(`${json[0].ticker.ask.slice(0,9)}<span class="strong"> USD</span>`)
+    $('.bitcoin').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span>`)
 }
 
 //Ethereum price
-function getRipplePrice () {
+function getRipplePrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/XRPUSD/latest/?market_code=nex`)
         .then(res => res.json())
 }
 
 function displayRippleResults(json) {
-    $('.ripple').append(`${json[0].ticker.ask.slice(0,9)}<span class="strong"> USD</span> `)
+    $('.ripple').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span> `)
 }
 
 //Ethereum price
-function getEthereumPrice () {
+function getEthereumPrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/ETHUSD/latest/?market_code=nex`)
         .then(res => res.json())
 }
 
 function displayEthereumResults(json) {
-    $('.ethereum').append(`${json[0].ticker.ask.slice(0,9)}<span class="strong"> USD</span> `)
+    $('.ethereum').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span> `)
 }
 
 //Litecoin price
-function getLitecoinPrice () {
+function getLitecoinPrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/LTCUSD/latest/?market_code=nex`)
         .then(res => res.json())
 }
 
 function displayLitecoinResults(json) {
-    $('.litecoin').append(`${json[0].ticker.ask.slice(0,9)}<span class="strong"> USD</span>`)
+    $('.litecoin').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span>`)
 }
 
 //StockQuote Form
-function watchStockQuoteForm () {
-    $('#stock-search').on('submit', function(ev) {
+function watchStockQuoteForm() {
+    $('#stock-search').on('submit', function (ev) {
         ev.preventDefault();
-    
+
         let userInput = $('input').val();
         getStockQuote(userInput);
         getStockNews(userInput);
-      })
+    })
 }
 
-function getStockQuote (userInput) {
+function getStockQuote(userInput) {
     fetch(`${IEXTRADING_BASE_URL}/stock/` + userInput + `/book`)
         .then(res => res.json())
         .then(json => displayStockQuote(json))
@@ -126,12 +132,12 @@ function displayStockQuote(json) {
 
 
 }
-
+//https://api.iextrading.com/1.0/stock/market/upcoming-ipos
 function displayMarketWatch(json) {
-    $('.market-watch').append(`${json.symbol} ${json[1].companyName} ${json[1].expectedDate}`)
+    $('.market-watch').append(`${json.rawData[1].symbol} ${json.rawData[1].companyName} ${json.rawData[1].expectedDate}`)
 }
 
-function getStockNews (userInput) {
+function getStockNews(userInput) {
     fetch(`${IEXTRADING_BASE_URL}/stock/` + userInput + `/news/last`)
         .then(res => res.json())
         .then(json => displayStockNews(json))
@@ -141,10 +147,18 @@ function displayStockNews(json) {
     $('.stock-news').html('');
 
     for (let i = 0; i < json.length; i++) {
-    $('.stock-news').append(`<li class="news"><p>${json[i].source} | ${json[i].datetime.slice(0,10)} </p><h5>${json[i].headline} </h5>
+        $('.stock-news').append(`<li class="news"><p>${json[i].source} | ${json[i].datetime.slice(0, 10)} </p><h5>${json[i].headline} </h5>
     </li>`)
     }
 }
+
+function displayWatchList(json) {
+    $('.watch-list').append(`<li class="news"><p>${json['AAPL'].quote.symbol} | ${json['AAPL'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news"><p>${json['FB'].quote.symbol} | ${json['FB'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news"><p>${json['TSLA'].quote.symbol} | ${json['TSLA'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news"><p>${json['GOOGL'].quote.symbol} | ${json['GOOGL'].quote.latestPrice} USD </p></li>`)
+}
+
 
 function getCurrentWeather() {
     fetch(`${AIRVISUAL_BASE_URL}/nearest_city?key=7hoQuH3S2FKxqfr59`)
@@ -152,7 +166,7 @@ function getCurrentWeather() {
         .then(json => displayWeatherData(json))
 }
 
-function displayWeatherData (json) {
+function displayWeatherData(json) {
     let cTemp = json.data.current.weather.tp;
     let cToFahr = cTemp * 9 / 5 + 32;
     let message = cToFahr;
@@ -168,6 +182,7 @@ $(initApp);
 
 
 //TO DO ITEMS
+//display data for watchlist and marketwatch ipos
 //change crypto to pull from one source 
 //single responsibility for getStockQuote getStockNews
 //add footer to index file and make it stick to bottom 
