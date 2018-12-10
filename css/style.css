@@ -1,0 +1,297 @@
+/* mobile */
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  background-color:#253138;
+  color: #fff;
+}
+
+header {
+  left: 0px;
+    position: fixed;
+    right: 0;
+    top: 0px;
+    z-index: 999;
+}
+
+main {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+section {
+  margin-bottom: 10px;
+}
+  
+p {
+  font-weight: 100;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5{
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  line-height: 20px;
+  z-index: 1;
+}
+
+nav.black ul {
+  background: #000;
+}
+
+/* nav ul {
+  line-height: 20px;
+  list-style: none;
+  background: black;
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  text-align: right;
+  margin: 0;
+  transition: 1s;
+  max-height: 0;
+} */
+
+input[type=text] {
+  background-color: rgba(0,0,0,.35);
+  border: 0;
+  width: 100%;
+  padding: 15px;
+  color: white; 
+  margin: 10px 0 10px; 
+  display: block;
+  box-sizing: border-box;
+}
+
+sup {
+  /* vertical-align: super; */
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.strong {
+  font-weight: 600;
+}
+
+.topbar-left {
+  background: #253138;
+  float: left;
+  text-align: center;
+  height: 71px;
+  padding-top: 20px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.navbar-right {
+  display: none;
+}
+
+.avatar {
+  padding:  40px 0;
+  text-align: center;
+}
+
+.avatar img {
+  width: 150px;
+  border-radius: 50%;
+  border: 3px white solid;
+  margin: 15px;
+}
+
+.side-menu {
+  height: 71px;
+  top: 70px;
+  width: 100%;
+  /* z-index: 10; */
+  background: #2f3e47;
+  bottom: 0;
+  margin-top: 0;
+  padding-bottom: 30px;
+  position: fixed;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+}
+
+.side-menu ul{
+  line-height: 20px;
+  list-style: none;
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  transition: 1s;
+  max-height: 0;
+
+}
+.side-menu li {
+  border: 0;
+  font-weight: normal;
+  line-height: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-decoration: none;
+}
+
+.side-menu a {
+  color: #9db2bf;
+  display: block;
+  padding: 12px 20px;
+  margin: 4px 0px;
+  background-color: #2f3e47;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+
+.menu-icon {
+  line-height: 20px;
+  text-align: right;
+  box-sizing: border-box;
+  padding: 15px 24px;
+  cursor: pointer;
+  color: #fff;
+  display: block;
+}
+
+.showing {
+  max-height: 34em;
+}
+
+.content-page .content {
+  padding: 0 10px;
+  margin-top: 170px;
+}
+
+.card-box {
+  background-color: #2f3e47; 
+  padding: 20px;    
+  height: 100%; 
+}
+
+.bitcoin, .ethereum, .ripple, .litecoin {
+  margin-top: 10px;
+}
+
+
+.stock-price {
+  color: #10c469;
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+.stock-data-col {
+  margin-right: 15px;
+}
+
+.company-sector {
+  float: left;
+}
+
+.news {
+  border-bottom: 1px solid #505458;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.news p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.news h4 {
+  margin: 5px 0 ;
+}
+
+.change-percent {
+  font-size: 12px;
+  color: rgb(24, 138, 226);
+}
+
+.fahrenheit {
+  font-size: 32px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.city {
+  font-size: 18px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+/**-----------------------------------------------------------------------Desktop--------------**/
+
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+  .topbar-left {
+     width: 250px;
+  }
+
+  .side-menu {
+    height: 100%;
+    width: 250px;
+  }
+
+  .side-menu ul{
+    max-height: 100%;
+  }
+
+  .navbar-right {
+    background-color: #253138;
+    border-radius: 0px;
+    border: none;
+    display: inline-block;
+    height: 71px;
+    margin-bottom: 0px;
+    padding: 33px 25px;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+  }
+  .menu-icon {
+    display: none;
+  }
+
+  .content-page {
+    margin-left: 250px;
+    overflow: hidden;
+  }
+
+  .content-page .content {
+    margin-top: 93px;
+  }
+
+  .weather-icon img {
+    width: 75px;
+    margin: 20px;
+  }
+
+  .weather {
+    font-size: 60px;
+    margin-top: 20px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+ 
+  }

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="js/index.js"></script>
+    <script src="js/mobile.js"></script>
+</head>
+
+<body>
+
+
+    <main>
+        <header>
+            <div class="topbar-left">
+                    <h1>Life at a Glance</h1>
+
+            </div>
+            <div class="navbar-right">
+                <h3>Dashboard</h3>
+            </div>
+        </header>
+        <nav>
+            <div class="side-menu">
+                <div class="menu-icon">
+                    <i class="fa fa-bars fa-2x"></i>
+                </div>
+
+                <ul>
+                    <li>
+                        <div class="avatar">
+                            <img src="/images/me.png">
+                            <p>Tambria Kemp</p>                
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Finance</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#">Travel</a>
+                    </li> -->
+                </ul>  
+            </div>  
+        </nav>
+        <div class="content-page">
+            <div class="content">
+                <div class="container-fluid">
+                    <section class="row">
+                        <div class="col">
+                            <div class="card-box">
+                                <h4>Bitcoin</h4>
+                                <div class="bitcoin"></div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="card-box">
+                                <h4>Ripple</h4>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="card-box">
+                                <h4>Ethereum</h4>
+                                <div class="ethereum"></div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="card-box">
+                                <h4>Litecoin</h4>
+                                <div class="litecoin"></div>
+
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <section class="row">
+                        <div class="col-xl-4">
+                            <div class="card-box">
+                                <h4>Stock Quote</h4>
+                                <form id="stock-search">
+                                    <input type="text" placeholder="Search...">
+                                    <!-- <input type="submit"> -->
+                                </form>
+
+                                <div class="company-name"></div>
+                                <div class="stock-price"></div>
+                                <div class="change-percent"></div>
+                                <div class="row">
+                                    <div class="col stock-data-col">
+                                        <div class="stock-open">
+                                            <p>Open </p>
+                                        </div>
+                                        <div class="stock-close">
+                                            <p>Close </p>
+                                        </div>
+
+                                    </div>
+                                    <div class="col stock-data-col">
+                                        <div class="stock-high">
+                                            <p>High </p>
+                                        </div>
+                                        <div class="stock-low">
+                                            <p>Low </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="card-box">
+                                <h4>Market Watch</h4>
+                                <div class="market-watch"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="card-box">
+                                <h4>Stock Watchlist</h4>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- <section class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card-box">
+
+                            </div>
+
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card-box">
+
+                            </div>
+
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card-box">
+
+                            </div>
+
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card-box">
+
+                            </div>
+
+                        </div>
+                    </section> -->
+
+                    <section class="row">
+                        <div class="col-4">
+                            <div class="card-box">
+                                <h4>Current Weather</h4>
+                                <div class="city"></div>
+                                <div class="row"> 
+                                    <div class="weather-icon"></div>
+                                    <div class="weather"></div>
+                                </div>
+                                
+                                <!-- <div class="row">
+                                    <div class="wind-speed"></div>
+                                </div> -->
+                                
+                            </div>
+
+                        </div>
+                        <div class="col-8">
+                            <div class="card-box">
+                                <h4>Stock News</h4>
+                                <div class="stock-news"></div>
+
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+                <footer>
+
+                </footer>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+</body>
+
+</html>
