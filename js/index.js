@@ -149,7 +149,7 @@ function displayStockNews(json) {
     $('.stock-news').html('');
 
     for (let i = 0; i < json.length; i++) {
-        $('.stock-news').append(`<li class="news"><p>${json[i].source} | ${json[i].datetime.slice(0, 10)} </p><h5>${json[i].headline} </h5>
+        $('.stock-news').append(`<li class="news"><p>${json[i].source} | ${json[i].datetime.slice(0, 10)} </p><a href="${json[i].url}"><h5>${json[i].headline} </h5></a>
     </li>`)
     }
 }
