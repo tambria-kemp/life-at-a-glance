@@ -18,7 +18,6 @@ header {
     z-index: 999;
     width: 100%;
     background: #253138;
-
 }
 
 main {
@@ -26,8 +25,6 @@ main {
   overflow: hidden;
   width: 100%;
 }
-
-
 
 section {
   margin-bottom: 10px;
@@ -59,7 +56,6 @@ a {
   font-size: 18px;
 }
 
-
 input[type=text] {
   background-color: rgba(0,0,0,.35);
   border: 0;
@@ -73,7 +69,6 @@ input[type=text] {
 }
 
 sup {
-  /* vertical-align: super; */
   font-size: 16px;
   vertical-align: top;
 }
@@ -88,7 +83,6 @@ sup {
   height: 71px;
   padding-top: 20px;
   position: relative;
-  /* width: 100%; */
   z-index: 1;
 }
 
@@ -112,7 +106,6 @@ sup {
   height: 71px;
   top: 70px;
   width: 100%;
-  /* z-index: 10; */
   background: #2f3e47;
   bottom: 0;
   margin-top: 0;
@@ -182,7 +175,6 @@ sup {
   margin-top: 10px;
 }
 
-
 .stock-price {
   color: #10c469;
   padding-top:10px;
@@ -192,10 +184,6 @@ sup {
 .stock-data-col {
   margin-right: 15px;
   font-size: 14px;
-}
-
-.company-sector {
-  float: left;
 }
 
 .news {
@@ -256,9 +244,6 @@ sup {
 /**-----------------------------------------------------------------------Desktop--------------**/
 
 
-@media (min-width: 576px) {
-
-}
 
 @media (min-width: 768px) {
   .stock-data-col {
@@ -282,7 +267,6 @@ sup {
     max-height: 100%;
   }
 
-
   .menu-icon {
     display: none;
   }
@@ -299,11 +283,5 @@ sup {
   .stock-data-col {
     font-size: 14px;
   }
-
-
-
 }
 
-@media (min-width: 1200px) {
-
-  }

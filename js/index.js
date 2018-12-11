@@ -176,6 +176,3 @@ function displayWeatherData(json) {
 $(initApp);
 
 
-//TO DO ITEMS
-//single responsibility for getStockQuote getStockNews
-//add footer to index file and make it stick to bottom 
