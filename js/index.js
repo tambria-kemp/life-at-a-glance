@@ -92,7 +92,7 @@ function displayLitecoinResults(json) {
     $('.litecoin').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span>`)
 }
 
-//StockQuote Form
+//STOCK QUOTE SEARCH 
 function watchStockQuoteForm() {
     $('#stock-search').on('submit', function (ev) {
         ev.preventDefault();
@@ -119,19 +119,20 @@ function displayStockQuote(json) {
     $('.stock-high').append(`<p>High ${json.quote.high} USD</p>`)
 }
 
+//UPCOMING IPOS 
 function getUpcomingIPO() {
     fetch(`${IEXTRADING_BASE_URL}/stock/market/upcoming-ipos`)
         .then(res => res.json())
         .then(json => displayUpcomingIPO(json))
 }
 
-//https://api.iextrading.com/1.0/stock/market/upcoming-ipos
 function displayUpcomingIPO(json) {
     for (let i = 0; i < 3; i++) {
         $('.market-watch').append(`<li class="news">${json.rawData[i].companyName}</br>${json.rawData[i].expectedDate}</li>`)
     }
 }
 
+//WATCHLIST
 function displayWatchList(json) {
     $('.watch-list').append(`<li class="news"><p><span class="blue">${json['AAPL'].quote.symbol}</span> | ${json['AAPL'].quote.latestPrice} USD </p></li>`)
     $('.watch-list').append(`<li class="news"><p><span class="blue">${json['FB'].quote.symbol}</span> | ${json['FB'].quote.latestPrice} USD </p></li>`)
@@ -139,6 +140,7 @@ function displayWatchList(json) {
     $('.watch-list').append(`<li class="news"><p><span class="blue">${json['GOOGL'].quote.symbol}</span> | ${json['GOOGL'].quote.latestPrice} USD </p></li>`)
 }
 
+//WATCH LIST
 function getStockNews(userInput) {
     fetch(`${IEXTRADING_BASE_URL}/stock/` + userInput + `/news/last`)
         .then(res => res.json())
@@ -154,6 +156,7 @@ function displayStockNews(json) {
     }
 }
 
+//CURRENT WEATHER
 function getCurrentWeather() {
     fetch(`${AIRVISUAL_BASE_URL}/nearest_city?key=7hoQuH3S2FKxqfr59`)
         .then(res => res.json())
@@ -168,7 +171,6 @@ function displayWeatherData(json) {
     $('.city').append(`<h3>${json.data.city}, ${json.data.state} </h3>`)
     $('.weather-icon').append(`<img src="/images/${json.data.current.weather.ic}.png">`)
     $('.weather').append(`${message} <sup>o</sup><div class="fahrenheit">F</div>`)
-    // $('.wind-speed').append(`<p>${json.data.current.weather.ws}</p>`)
 }
 
 
@@ -176,7 +178,5 @@ $(initApp);
 
 
 //TO DO ITEMS
-//display data for watchlist and UpcomingIPO ipos
-//change crypto to pull from one source 
 //single responsibility for getStockQuote getStockNews
 //add footer to index file and make it stick to bottom 
