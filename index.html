@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Life at a Glance</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid.css" />
@@ -16,19 +16,16 @@
 </head>
 
 <body>
-        <header >
-                <div class="topbar-left">
-                        <h1>Life at a Glance</h1>
-    
-                </div>
-                <!-- <div class="navbar-right col-10">
-                    <h3>Dashboard</h3>
-                </div> -->
-            </header>
+    <header role="banner" >
+        <div class="topbar-left">
+                <h1>Life at a Glance</h1>
+        </div>
 
-    <main>
+    </header>
 
-        <nav>
+    <main role="main">
+
+        <nav role="navigation">
             <div class="side-menu">
                 <div class="menu-icon">
                     <i class="fa fa-bars fa-2x"></i>
@@ -37,16 +34,13 @@
                 <ul>
                     <li>
                         <div class="avatar">
-                            <img src="/images/me.png">
-                            <p>Tambria Kemp</p>                
+                            <img src="/images/me.png" role="image">
+                            <p>Tambria Kemp</p> 
+                            <p>IG: @bree_kemp</p>                
+               
                         </div>
                     </li>
-                    <li>
-                        <a href="#">Finance</a>
-                    </li>
-                    <!-- <li>
-                        <a href="#">Travel</a>
-                    </li> -->
+
                 </ul>  
             </div>  
         </nav>
@@ -59,27 +53,26 @@
                                 <h4>Bitcoin</h4>
                                 <div class="bitcoin"></div>
                             </div>
-
                         </div>
+
                         <div class="col-xl-3 col-pad">
                             <div class="card-box">
                                 <h4>Ripple</h4>
                                 <div class="ripple"></div>
                             </div>
-
                         </div>
+
                         <div class="col-xl-3 col-pad">
                             <div class="card-box">
                                 <h4>Ethereum</h4>
                                 <div class="ethereum"></div>
                             </div>
-
                         </div>
+
                         <div class="col-xl-3 col-pad">
                             <div class="card-box">
                                 <h4>Litecoin</h4>
                                 <div class="litecoin"></div>
-
                             </div>
 
                         </div>
@@ -89,9 +82,8 @@
                         <div class="col-xl-4 col-pad">
                             <div class="card-box">
                                 <h4>Stock Quote</h4>
-                                <form id="stock-search">
+                                <form id="stock-search" role="form">
                                     <input type="text" placeholder="Search...">
-                                    <!-- <input type="submit"> -->
                                 </form>
 
                                 <div class="company-name"></div>
@@ -111,50 +103,21 @@
 
                             </div>
                         </div>
-
                 
                         <div class="col-xl-4 col-pad">
                             <div class="card-box">
                                 <h4>Upcoming IPOs</h4>
                                 <div class="market-watch"></div>
                             </div>
-
                         </div>
+
                         <div class="col-xl-4 col-pad">
                             <div class="card-box">
                                 <h4>Stock Watchlist</h4>
                                 <div class="watch-list"></div>
                             </div>
-
                         </div>
                     </section>
-
-                    <!-- <section class="row">
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card-box">
-
-                            </div>
-
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card-box">
-
-                            </div>
-
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card-box">
-
-                            </div>
-
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card-box">
-
-                            </div>
-
-                        </div>
-                    </section> -->
 
                     <section class="row">
                         <div class="col-xl-4 col-pad">
@@ -165,21 +128,14 @@
                                     <div class="weather-icon"></div>
                                     <div class="weather"></div>
                                 </div>
-                                
-                                <!-- <div class="row">
-                                    <div class="wind-speed"></div>
-                                </div> -->
-                                
                             </div>
-
                         </div>
+
                         <div class="col-xl-8">
                             <div class="card-box">
                                 <h4>Stock News</h4>
                                 <div class="stock-news"></div>
-
                             </div>
-
                         </div>
                     </section>
                 </div>
@@ -190,8 +146,6 @@
         </div>
 
     </main>
-
-
 
 </body>
 

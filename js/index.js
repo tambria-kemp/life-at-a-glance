@@ -1,4 +1,3 @@
-//https://nexchange2.docs.apiary.io/#reference/0/latest-ticker/get-latest-ticker?console=1
 'use strict'
 
 const NEXCHANGE_BASE_URL = 'https://api.nexchange.io/en/api/v1'
@@ -24,7 +23,7 @@ function initApp() {
     getLitecoinPrice()
         .then(json => {
             displayLitecoinResults(json)
-        }) 
+        })
 
     getUpcomingIPO();
     defaultWatchList();
@@ -128,19 +127,19 @@ function getUpcomingIPO() {
 
 function displayUpcomingIPO(json) {
     for (let i = 0; i < 3; i++) {
-        $('.market-watch').append(`<li class="news">${json.rawData[i].companyName}</br>${json.rawData[i].expectedDate}</li>`)
+        $('.market-watch').append(`<li class="news" role="list">${json.rawData[i].companyName}</br>${json.rawData[i].expectedDate}</li>`)
     }
 }
 
 //WATCHLIST
 function displayWatchList(json) {
-    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['AAPL'].quote.symbol}</span> | ${json['AAPL'].quote.latestPrice} USD </p></li>`)
-    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['FB'].quote.symbol}</span> | ${json['FB'].quote.latestPrice} USD </p></li>`)
-    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['TSLA'].quote.symbol}</span> | ${json['TSLA'].quote.latestPrice} USD </p></li>`)
-    $('.watch-list').append(`<li class="news"><p><span class="blue">${json['GOOGL'].quote.symbol}</span> | ${json['GOOGL'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news" role="list"><p><span class="blue">${json['AAPL'].quote.symbol}</span> | ${json['AAPL'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news" role="list"><p><span class="blue">${json['FB'].quote.symbol}</span> | ${json['FB'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news" role="list"><p><span class="blue">${json['TSLA'].quote.symbol}</span> | ${json['TSLA'].quote.latestPrice} USD </p></li>`)
+    $('.watch-list').append(`<li class="news" role="list"><p><span class="blue">${json['GOOGL'].quote.symbol}</span> | ${json['GOOGL'].quote.latestPrice} USD </p></li>`)
 }
 
-//WATCH LIST
+//STOCK NEWS
 function getStockNews(userInput) {
     fetch(`${IEXTRADING_BASE_URL}/stock/` + userInput + `/news/last`)
         .then(res => res.json())
@@ -151,7 +150,7 @@ function displayStockNews(json) {
     $('.stock-news').html('');
 
     for (let i = 0; i < json.length; i++) {
-        $('.stock-news').append(`<li class="news"><p>${json[i].source} | ${json[i].datetime.slice(0, 10)} </p><a href="${json[i].url}"><h5>${json[i].headline} </h5></a>
+        $('.stock-news').append(`<li class="news" role="list"><p>${json[i].source} | ${json[i].datetime.slice(0, 10)} </p><a href="${json[i].url}"><h5>${json[i].headline} </h5></a>
     </li>`)
     }
 }
@@ -169,7 +168,7 @@ function displayWeatherData(json) {
     let message = cToFahr;
 
     $('.city').append(`<h3>${json.data.city}, ${json.data.state} </h3>`)
-    $('.weather-icon').append(`<img src="/images/${json.data.current.weather.ic}.png">`)
+    $('.weather-icon').append(`<img src="/images/${json.data.current.weather.ic}.png" role="image">`)
     $('.weather').append(`${message} <sup>o</sup><div class="fahrenheit">F</div>`)
 }
 
