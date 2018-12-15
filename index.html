@@ -9,16 +9,21 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="css/grid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
     <script src="js/index.js"></script>
     <script src="js/mobile.js"></script>
 </head>
 
 <body>
-    <header role="banner" >
+    <header role="banner">
         <div class="topbar-left">
-                <h1>Life at a Glance</h1>
+            <h1>Life at a Glance</h1>
+        </div>
+        <div class="topbar-right">
+            <h4>A daily view of your most frequently consumed finance data</h4>
         </div>
 
     </header>
@@ -34,43 +39,43 @@
                 <ul>
                     <li>
                         <div class="avatar">
-                            <img src="/images/me.png" role="image">
-                            <p>Tambria Kemp</p> 
-                            <p>IG: @bree_kemp</p>                
-               
+                            <img src="/images/me.png" alt="avatar image" role="image">
+                            <p>Tambria Kemp</p>
+                            <p>IG: @bree_kemp</p>
+
                         </div>
                     </li>
 
-                </ul>  
-            </div>  
+                </ul>
+            </div>
         </nav>
         <div class="content-page">
             <div class="content">
                 <div class="container-fluid">
                     <section class="row">
                         <div class="col-xl-3 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="bitcoin">
                                 <h4>Bitcoin</h4>
                                 <div class="bitcoin"></div>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="ripple">
                                 <h4>Ripple</h4>
                                 <div class="ripple"></div>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="ethereum">
                                 <h4>Ethereum</h4>
                                 <div class="ethereum"></div>
                             </div>
                         </div>
 
                         <div class="col-xl-3 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="litecoin">
                                 <h4>Litecoin</h4>
                                 <div class="litecoin"></div>
                             </div>
@@ -80,10 +85,10 @@
 
                     <section class="row">
                         <div class="col-xl-4 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="stock-quote">
                                 <h4>Stock Quote</h4>
                                 <form id="stock-search" role="form">
-                                    <input type="text" placeholder="Search...">
+                                    <input type="text" name="search" placeholder="Search...">
                                 </form>
 
                                 <div class="company-name"></div>
@@ -103,16 +108,16 @@
 
                             </div>
                         </div>
-                
+
                         <div class="col-xl-4 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="upcoming-ipos">
                                 <h4>Upcoming IPOs</h4>
                                 <div class="market-watch"></div>
                             </div>
                         </div>
 
                         <div class="col-xl-4 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="stock-watchlist">
                                 <h4>Stock Watchlist</h4>
                                 <div class="watch-list"></div>
                             </div>
@@ -121,10 +126,10 @@
 
                     <section class="row">
                         <div class="col-xl-4 col-pad">
-                            <div class="card-box">
+                            <div class="card-box" id="current-weather">
                                 <h4>Current Weather</h4>
                                 <div class="city"></div>
-                                <div class="row"> 
+                                <div class="row">
                                     <div class="weather-icon"></div>
                                     <div class="weather"></div>
                                 </div>
@@ -132,7 +137,7 @@
                         </div>
 
                         <div class="col-xl-8">
-                            <div class="card-box">
+                            <div class="card-box" id="stock-news">
                                 <h4>Stock News</h4>
                                 <div class="stock-news"></div>
                             </div>

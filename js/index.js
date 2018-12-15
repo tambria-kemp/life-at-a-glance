@@ -3,6 +3,7 @@
 const NEXCHANGE_BASE_URL = 'https://api.nexchange.io/en/api/v1'
 const IEXTRADING_BASE_URL = 'https://api.iextrading.com/1.0'
 const AIRVISUAL_BASE_URL = 'https://api.airvisual.com/v2'
+const errorMessage = 'Information unavailable'
 
 function initApp() {
     getBitcoinPrice()
@@ -25,66 +26,101 @@ function initApp() {
             displayLitecoinResults(json)
         })
 
-    getUpcomingIPO();
+    defaultStockQuote()
+        .then(json => {
+            displayStockQuote(json)
+        })
+
+    defaultWatchList()
+        .then(json => {
+            displayWatchList(json)
+        })
+
+    defaultStockNews()
+        .then(json => {
+            displayStockNews(json)
+        })
+
     defaultWatchList();
     getCurrentWeather();
     defaultStockQuote();
     defaultStockNews();
     watchStockQuoteForm();
+    getUpcomingIPO();
 }
 
+//INITIAL STOCK QUOTE
 function defaultStockQuote() {
-    fetch(`${IEXTRADING_BASE_URL}/stock/aapl/book`)
+    return fetch(`${IEXTRADING_BASE_URL}/stock/aapl/book`)
         .then(res => res.json())
-        .then(json => displayStockQuote(json))
+        .catch(e => {
+            document.getElementById('stock-quote').innerHTML = errorMessage
+        })
 }
-
+//INITIAL WATCH LIST
 function defaultWatchList() {
-    fetch(`${IEXTRADING_BASE_URL}/stock/market/batch?symbols=aapl,fb,tsla,googl,aal&types=quote,news,chart&range=1m&last=5`)
+    return fetch(`${IEXTRADING_BASE_URL}/stock/market/batch?symbols=aapl,fb,tsla,googl,aal&types=quote,news,chart&range=1m&last=5`)
         .then(res => res.json())
-        .then(json => displayWatchList(json))
+        .catch(e => {
+            document.getElementById('watch-list').innerHTML = errorMessage
+        })
 }
 
+//INITIAL STOCK NEWS
 function defaultStockNews() {
-    fetch(`${IEXTRADING_BASE_URL}/stock/aapl/news/last`)
+    return fetch(`${IEXTRADING_BASE_URL}/stock/aapl/news/last`)
         .then(res => res.json())
-        .then(json => displayStockNews(json))
+        .catch(e => {
+            document.getElementById('stock-news').innerHTML = errorMessage
+        })
 }
 
-//Bitcoin price
+//BITCOIN PRICE
 function getBitcoinPrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/BTCUSD/latest/?market_code=nex`)
         .then(res => res.json())
+        .catch(e => {
+            document.getElementById('bitcoin').innerHTML = errorMessage
+        })
 }
 
 function displayBitcoinResults(json) {
     $('.bitcoin').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span>`)
 }
 
-//Ripple price
+//RIPPLE PRICE
 function getRipplePrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/XRPUSDT/latest/?market_code=nex`)
         .then(res => res.json())
+        .catch(e => {
+            document.getElementById('ripple').innerHTML = errorMessage
+        })
 }
 
 function displayRippleResults(json) {
     $('.ripple').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span> `)
 }
 
-//Ethereum price
+//ETHEREUM PRICE
 function getEthereumPrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/ETHUSD/latest/?market_code=nex`)
         .then(res => res.json())
+        .catch(e => {
+            document.getElementById('ethereum').innerHTML = errorMessage
+        })
 }
 
 function displayEthereumResults(json) {
     $('.ethereum').append(`${json[0].ticker.ask.slice(0, 9)}<span class="strong"> USD</span> `)
 }
 
-//Litecoin price
+//LITECOIN PRICE
 function getLitecoinPrice() {
     return fetch(`${NEXCHANGE_BASE_URL}/price/LTCUSD/latest/?market_code=nex`)
         .then(res => res.json())
+        .catch(e => {
+            document.getElementById('litecoin').innerHTML = errorMessage
+        })
 }
 
 function displayLitecoinResults(json) {
@@ -103,9 +139,12 @@ function watchStockQuoteForm() {
 }
 
 function getStockQuote(userInput) {
-    fetch(`${IEXTRADING_BASE_URL}/stock/` + userInput + `/book`)
+    return fetch(`${IEXTRADING_BASE_URL}/stock/` + userInput + `/book`)
         .then(res => res.json())
         .then(json => displayStockQuote(json))
+        .catch(e => {
+            document.getElementById('stock-quote').innerHTML = errorMessage
+        })
 }
 
 function displayStockQuote(json) {
@@ -123,11 +162,20 @@ function getUpcomingIPO() {
     fetch(`${IEXTRADING_BASE_URL}/stock/market/upcoming-ipos`)
         .then(res => res.json())
         .then(json => displayUpcomingIPO(json))
+        .catch(e => {
+            document.getElementById('upcoming-ipos').innerHTML = errorMessage
+        })
 }
 
 function displayUpcomingIPO(json) {
-    for (let i = 0; i < 3; i++) {
-        $('.market-watch').append(`<li class="news" role="list">${json.rawData[i].companyName}</br>${json.rawData[i].expectedDate}</li>`)
+    if (json.rawData.length == 0) {
+        //not available
+        $('.market-watch').append(`<p>There are no upcoming IPOs at the moment.</p>`)
+    }
+    else {
+        for (let i = 0; i < 3; i++) {
+            $('.market-watch').append(`<li class="news" role="list">${json.rawData[i].companyName}</br>${json.rawData[i].expectedDate}</li>`)
+        }
     }
 }
 
@@ -168,11 +216,10 @@ function displayWeatherData(json) {
     let message = cToFahr;
 
     $('.city').append(`<h3>${json.data.city}, ${json.data.state} </h3>`)
-    $('.weather-icon').append(`<img src="/images/${json.data.current.weather.ic}.png" role="image">`)
+    $('.weather-icon').append(`<img src="/images/${json.data.current.weather.ic}.png" alt="weather icon" role="image">`)
     $('.weather').append(`${message} <sup>o</sup><div class="fahrenheit">F</div>`)
 }
 
 
 $(initApp);
-
 
